@@ -1,0 +1,26 @@
+{
+  "name": "mmm-recentlyadded",
+  "version": "1.1.0",
+  "description": "MagicMirror² module: recent Radarr movies and Sonarr shows in one cover flow",
+  "main": "MMM-RecentlyAdded.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mkubicek/MMM-RecentlyAdded.git"
+  },
+  "keywords": [
+    "magicmirror",
+    "magicmirror-module",
+    "radarr",
+    "sonarr",
+    "cover-flow",
+    "media"
+  ],
+  "engines": {
+    "node": ">=10.24.0"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "demo": "node demo/server.js"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,169 @@
+.recently-added {
+  width: 460px;
+  color: #aaa;
+  text-align: left;
+}
+
+.recently-added .coverflow {
+  display: flex;
+  height: 132px;
+}
+
+/* Posters. Covers stay opaque and are darkened with a black veil, so overlapping ones don't
+   bleed through each other; on the black mirror a fully veiled cover is invisible. */
+.recently-added .cover-stage {
+  position: relative;
+  flex: none;
+  width: 150px;
+  height: 100%;
+  perspective: 420px;
+}
+.recently-added .cover {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 88px;
+  height: 132px;
+  background: #111;
+  /* visibility flips at the end when leaving, so parked covers aren't painted at all. */
+  transition: transform 0.9s cubic-bezier(0.25, 0.8, 0.25, 1), visibility 0.9s;
+}
+.recently-added .cover img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.recently-added .cover::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: #000;
+  opacity: 1;
+  transition: opacity 0.9s ease;
+}
+.recently-added .cover-active {
+  z-index: 10;
+  transform: none;
+}
+.recently-added .cover-active::after {
+  opacity: 0;
+}
+.recently-added .cover-side-1 {
+  z-index: 9;
+  transform: translateX(-54px) rotateY(58deg) scale(0.94);
+}
+.recently-added .cover-side-1::after {
+  opacity: 0.45;
+}
+.recently-added .cover-side-2 {
+  z-index: 8;
+  transform: translateX(-76px) rotateY(58deg) scale(0.88);
+}
+.recently-added .cover-side-2::after {
+  opacity: 0.7;
+}
+.recently-added .cover-side-3 {
+  z-index: 7;
+  transform: translateX(-94px) rotateY(58deg) scale(0.82);
+}
+.recently-added .cover-side-3::after {
+  opacity: 0.85;
+}
+.recently-added .cover-hidden {
+  z-index: 6;
+  visibility: hidden;
+  transform: translateX(-110px) rotateY(58deg) scale(0.76);
+}
+.recently-added .cover-exit {
+  z-index: 9;
+  visibility: hidden;
+  transform: translateX(56px) rotateY(-58deg) scale(0.94);
+}
+/* Gone before it reaches the text. */
+.recently-added .cover-exit::after {
+  transition-duration: 0.35s;
+}
+
+/* Text for the active poster: title and meta on top, when it arrived at the poster's foot. */
+.recently-added .copy-stage {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  margin-left: 16px;
+}
+.recently-added .copy {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateX(12px);
+  transition: opacity 0.45s ease, transform 0.45s ease, visibility 0.45s;
+}
+.recently-added .copy.is-active {
+  visibility: visible;
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.35s;
+}
+.recently-added .title {
+  display: flex;
+  align-items: flex-start;
+  font-size: 0.75em;
+  line-height: 1.2em;
+}
+.recently-added .title .text {
+  min-width: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.recently-added .new-dot {
+  flex: none;
+  width: 7px;
+  height: 7px;
+  margin: 0.5em 0 0 10px;
+  border-radius: 50%;
+  background: #fff;
+}
+.recently-added .new-dot[hidden] {
+  display: none;
+}
+.recently-added .meta {
+  margin-top: 4px;
+  font-size: 0.6em;
+  line-height: 1.25em;
+  color: #999;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.recently-added .overview {
+  margin-top: 8px;
+  font-size: 0.5em;
+  line-height: 1.25em;
+  color: #888;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.recently-added .copy[data-long-title] .overview {
+  margin-top: 4px;
+  -webkit-line-clamp: 1;
+}
+.recently-added .added {
+  margin-top: auto;
+  font-size: 0.55em;
+  line-height: 1.2em;
+  color: #777;
+}
